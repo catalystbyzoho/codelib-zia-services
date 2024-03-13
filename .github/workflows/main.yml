@@ -1,0 +1,40 @@
+name: Catalyst ZIA Services Release
+
+on:
+  push:
+    tags:
+      - "v*" # P
+jobs:
+  build:
+    environment: Production
+    name: Creating Catalyst ZIA Services Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloning repository
+        uses: actions/checkout@v2
+      - name: Installing node-18
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - name: Installing Catalyst CLI
+        run: npm i -g zcatalyst-cli@1.17.3
+      - name: Downloading dependencies for catalyst-zia-services
+        working-directory: ./functions/catalyst-zia-services
+        run: npm install --omit=dev
+      - name: Deploying to Catalyst
+        run: catalyst deploy --project ${{ secrets.CATALYST_PROJECT_NAME }} --org ${{ secrets.CATALYST_ORG }} --token ${{ secrets.CATALYST_TOKEN }}
+      - name: Creating release directory
+        run: mkdir -p release/functions
+      - name: Creating a zip for catalyst-zia-services
+        working-directory: ./functions/catalyst-zia-services
+        run: zip -r ../../release/functions/catalyst-zia-services.zip .
+      - name: Copying project-template-1.0.0.json
+        run: cp project-template-1.0.0.json release/project-template-1.0.0.json
+      - name: Generating release
+        run: cd release && zip -r release.zip .
+      - name: Generating artifacts
+        uses: ncipollo/release-action@v1
+        with:
+          draft: true
+          tag: ${{ env.RELEASE_VERSION }}
+          artifacts: "./release/release.zip"
