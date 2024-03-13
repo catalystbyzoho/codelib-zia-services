@@ -1,4 +1,4 @@
-name: Catalyst ZIA Services Release
+name: Catalyst Zia Services Release
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     environment: Production
-    name: Creating Catalyst ZIA Services Release
+    name: Creating Catalyst Zia Services Release
     runs-on: ubuntu-latest
     steps:
       - name: Cloning repository
