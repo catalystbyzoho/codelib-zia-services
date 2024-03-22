@@ -1,0 +1,30 @@
+{
+	"name": "project-template",
+	"version": "1.0.0",
+	"parameters": {},
+	"components": {
+		"Functions": [
+			{
+				"type": "function",
+				"name": "catalyst-zia-services",
+				"properties": {
+					"stack": "node18",
+					"code": {
+						"path": "functions/catalyst-zia-services.zip"
+					},
+					"configuration": {
+						"environment": {
+							"variables": {
+								"CODELIB_SECRET_KEY": "CODELIB_FAKE_KEY"
+							}
+						},
+						"memory": 256
+					},
+					"type": "applogic",
+					"name": "catalyst-zia-services"
+				},
+				"dependsOn": []
+			}
+		]
+	}
+}

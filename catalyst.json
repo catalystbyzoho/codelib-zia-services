@@ -1,0 +1,9 @@
+{
+  "functions": {
+    "targets": [
+      "catalyst-zia-services"
+    ],
+    "ignore": [],
+    "source": "functions"
+  }
+}
