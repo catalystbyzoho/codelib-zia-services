@@ -31,7 +31,7 @@ You can also initialize a new project following the steps mentioned in [this pag
 Execute the command below in the Catalyst CLI to install the Zoho CRM Bulk Data Processing CodeLib solution:
 
 ```bash
-catalyst codelib:install https://github.com/akilavan-jayakumar/codelib-zia-services
+catalyst codelib:install https://github.com/catalystbyzoho/codelib-zia-services
 ```
 
 Upon installation, the pre-configured Catalyst resources of the CodeLib solution will be automatically deployed to the Catalyst console.
